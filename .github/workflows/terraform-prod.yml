@@ -1,0 +1,1 @@
+﻿name: Terraform Prod\n\non: [push]\n\njobs:\n  plan:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Placeholder\n        run: echo 'Terraform Prod workflow placeholder'

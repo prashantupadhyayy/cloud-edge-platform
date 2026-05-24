@@ -1,0 +1,14 @@
+﻿# Terraform
+*.tfstate
+*.tfstate.*
+*.tfvars
+.terraform/
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+.DS_Store
+
+# Local IDE
+.vscode/
+.idea/

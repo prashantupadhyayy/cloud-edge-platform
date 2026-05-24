@@ -1,0 +1,1 @@
+﻿name: Security Scan\n\non: [push]\n\njobs:\n  scan:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Placeholder\n        run: echo 'Security scan workflow placeholder'

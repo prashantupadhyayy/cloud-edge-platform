@@ -1,0 +1,1 @@
+﻿name: Container Apps Deploy\n\non: [push]\n\njobs:\n  deploy:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Placeholder\n        run: echo 'Container Apps deploy workflow placeholder'
