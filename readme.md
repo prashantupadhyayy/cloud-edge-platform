@@ -1,370 +1,496 @@
-# Azure Cloudflare AI Platform
+# AI-Ready Cloud-Native Platform Architecture
 
-Production-grade cloud platform infrastructure built using Terraform on Microsoft Azure with Cloudflare integration, featuring scalable application hosting, AI/ML workloads, API management, centralized monitoring, enterprise-grade observability, and secure AI governance capabilities.
+> Enterprise-grade cloud-native AI platform built using Terraform, Azure, AKS, Azure Container Apps, Cloudflare, and modern MLOps practices.
 
 ---
 
-# Architecture Vision
+# Project Vision
 
-This project is designed as a modern enterprise-grade AI platform combining:
+This repository represents a production-style enterprise platform architecture focused on building scalable, secure, observable, and AI-ready systems using modern cloud-native technologies.
+
+The goal of this project is to deeply understand and implement:
 
 - Platform Engineering
-- DevOps
+- Cloud Architecture
+- Kubernetes Operations
+- DevOps & IaC
 - AI Infrastructure
 - MLOps
-- Cloud Security
-- Infrastructure as Code (IaC)
+- Responsible AI
 - Observability Engineering
+- Enterprise Security Practices
 
-The goal is to build a scalable and secure cloud-native platform capable of hosting:
-- Traditional applications
-- AI services
-- LLM workloads
-- MCP orchestration services
-- MLOps pipelines
-- Responsible AI systems
-
----
-
-# Core Platform Features
-
-## Edge & Security
-- Cloudflare
-- WAF
-- DDoS Protection
-- CDN
-- Rate Limiting
-- Bot Protection
-
-## Cloud Infrastructure
-- Azure Front Door
-- API Management (APIM)
-- Azure App Services
-- Redis Cache
-- Azure Databases
-- Storage Accounts
-
-## AI & MLOps
-- Azure AI Foundry
-- Azure Machine Learning
-- Azure OpenAI
-- Prompt Flow
-- Content Safety
-- PII Detection
-- AI Guardrails
-- Model Monitoring
-- AI Observability
-
-## Monitoring & Observability
-- Log Analytics Workspace
-- Application Insights
-- Azure Monitor
-- Alerts
-- Diagnostic Settings
+This project simulates how modern organizations architect and deploy:
+- AI platforms
+- Cloud-native applications
+- Microservices ecosystems
+- AI orchestration services
+- Enterprise observability systems
+- Secure production workloads
 
 ---
 
-# High-Level Architecture
+# Core Architecture Overview
 
 ```text
 Users
    ↓
-Cloudflare
-(WAF + CDN + DDoS + DNS + Rate Limiting)
+Cloudflare Edge
    ↓
 Azure Front Door
-(Global Routing + TLS + Failover)
    ↓
-API Management (APIM)
+Azure API Management
    ↓
---------------------------------------------------------
-|                 Application Layer                    |
---------------------------------------------------------
-| Frontend App Service                                 |
-| Backend API App Service                              |
-| MCP Orchestration App Service                        |
-| AI Service App Service                               |
---------------------------------------------------------
+AKS Cluster (Application Layer)
    ↓
---------------------------------------------------------
-|                  AI & MLOps Layer                    |
---------------------------------------------------------
-| Azure AI Foundry                                     |
-| Azure OpenAI                                         |
-| Azure Machine Learning                               |
-| Prompt Flow                                          |
-| Content Safety                                       |
-| PII Detection                                        |
-| AI Guardrails                                        |
---------------------------------------------------------
+Azure Container Apps (AI/ML Workloads)
    ↓
-Redis Cache
+Data & Infrastructure Layer
    ↓
-Database Layer
-(SQL / PostgreSQL / CosmosDB)
-   ↓
-Storage Account
-
-Monitoring & Observability:
-- Application Insights
-- Log Analytics Workspace
-- Azure Monitor
-- Alerts
+Observability & Governance
 ```
 
 ---
 
-# AI & MLOps Architecture
+# Major Platform Components
 
-## Azure AI Foundry
+# 1. Edge & Security Layer
 
-Used for:
+## Cloudflare
+
+Cloudflare acts as the global edge security and traffic acceleration layer.
+
+### Responsibilities
+- DNS Management
+- WAF Protection
+- CDN
+- DDoS Mitigation
+- SSL/TLS
+- Rate Limiting
+- Bot Management
+- Traffic Filtering
+
+### Why Cloudflare?
+- Reduces latency globally
+- Protects Azure workloads from direct exposure
+- Improves application performance
+- Adds enterprise-grade edge security
+
+---
+
+# 2. Global Traffic Management
+
+## Azure Front Door
+
+Azure Front Door provides:
+- Global traffic routing
+- TLS termination
+- Health probes
+- Intelligent failover
+- Layer 7 load balancing
+- Multi-region routing capability
+
+### Planned Features
+- Path-based routing
+- Backend pools
+- Origin health monitoring
+- Custom domains
+- WAF integration
+
+---
+
+# 3. API Gateway Layer
+
+## Azure API Management (APIM)
+
+APIM acts as the centralized API gateway for the platform.
+
+### Responsibilities
+- API Gateway
+- JWT Validation
+- API Authentication
+- Rate Limiting
+- Request/Response Transformation
+- API Versioning
+- API Analytics
+- Backend Routing
+- Centralized Governance
+
+### Why APIM?
+To establish:
+- API standardization
+- Security enforcement
+- Centralized observability
+- Scalable API governance
+
+---
+
+# 4. Application Layer — Running on AKS
+
+## Azure Kubernetes Service (AKS)
+
+AKS hosts the primary cloud-native application ecosystem.
+
+### Planned Workloads
+
+## Frontend Services
+- React Applications
+- Next.js Applications
+- Nginx Ingress
+
+## Backend APIs
+- REST APIs
+- GraphQL APIs
+- Authentication Services
+- Core Business Logic
+
+## MCP Services
+Responsible for:
 - AI orchestration
-- Model integration
-- Prompt workflows
-- AI experimentation
-- Agent development
-- AI governance
+- Context management
+- Tool execution
+- Workflow coordination
+- Agent orchestration
+
+## AI Gateway
+Responsible for:
+- AI request routing
+- Model access abstraction
+- Prompt routing
+- AI tool integrations
+
+## Realtime Services
+- WebSockets
+- Live communication
+- Event streaming
+
+## Worker Services
+- Background jobs
+- Queue processing
+- Async workflows
+- Scheduled tasks
 
 ---
 
-## Azure OpenAI
+# AKS Platform Features
 
-Supports:
-- GPT models
-- Embeddings
-- AI inference
-- Semantic search
-- LLM-based APIs
+### Kubernetes Components
+- Deployments
+- Services
+- ConfigMaps
+- Secrets
+- Ingress Controllers
+- Horizontal Pod Autoscaler (HPA)
+- Network Policies
+
+### Planned Enhancements
+- Service Mesh
+- GitOps
+- ArgoCD
+- Helm Charts
+- Cluster Autoscaler
+- Workload Identity
+- Multi-node pools
 
 ---
 
-## Azure Machine Learning
+# 5. AI / MLOps Layer — Running on Azure Container Apps
 
-Used for:
+## Why Azure Container Apps?
+
+The AI and ML workloads are intentionally separated from AKS to:
+- isolate compute-heavy workloads
+- simplify scaling
+- reduce Kubernetes operational overhead
+- support event-driven scaling
+- optimize cost
+
+---
+
+# Planned AI Workloads
+
+## Model Inference Services
+Responsible for:
+- LLM inference
+- AI model serving
+- Real-time inference APIs
+
+### Planned Integrations
+- Azure OpenAI
+- GPT Models
+- Embedding Models
+
+---
+
+## Embedding Services
+Responsible for:
+- Vector generation
+- Semantic embeddings
+- Search indexing
+
+---
+
+## Vector Search
+Planned for:
+- RAG Architecture
+- Semantic Search
+- Context Retrieval
+- Knowledge Base Systems
+
+### Planned Technologies
+- Cosmos DB Vector Search
+- PostgreSQL pgvector
+
+---
+
+## ML Pipeline Services
+Responsible for:
+- Batch processing
+- Data transformation
+- AI preprocessing
+- Pipeline orchestration
+
+---
+
+## Model Training Workloads
+Planned capabilities:
+- Experiment tracking
+- Distributed training
+- Model evaluation
 - ML experimentation
-- Model training
-- Model registry
-- Model deployment
-- ML pipelines
-- Endpoint management
-- Drift monitoring
 
 ---
 
-## Prompt Flow
-
-Supports:
-- Prompt orchestration
-- AI workflow chaining
-- Evaluation pipelines
-- LLM testing
-- AI experimentation
+## Batch Scoring
+Used for:
+- Scheduled predictions
+- Bulk inference workloads
+- Enterprise AI pipelines
 
 ---
 
-# Responsible AI & Security
+# AI Governance & Responsible AI
 
 ## Content Safety
 
-Implemented for:
+Planned implementation:
 - Harmful content filtering
 - Prompt moderation
 - Output moderation
 - Jailbreak prevention
-- Toxicity detection
 
 ---
 
 ## PII Detection
 
-Used for:
-- Sensitive data masking
-- Compliance workflows
+Responsible for:
+- Sensitive data detection
+- Data masking
 - Privacy protection
-- AI input sanitization
+- Compliance workflows
 
-Examples:
-- Phone numbers
+### Example PII Detection
 - Emails
+- Phone Numbers
 - Aadhaar/PAN masking
-- Personal identifiers
+- Personal Identifiers
 
 ---
 
-## AI Guardrails
+## Prompt Guardrails
 
 Responsible for:
 - Prompt validation
-- AI safety enforcement
-- Policy validation
-- Response filtering
-- Hallucination control
-- Secure AI interaction
+- AI policy enforcement
+- Secure prompt handling
+- Hallucination mitigation
 
 ---
 
-# Infrastructure Components
+## AI Audit & Logging
 
-## Cloudflare
-Responsible for:
-- DNS
-- WAF
-- CDN
-- DDoS protection
-- SSL/TLS
-- Traffic protection
+Tracks:
+- Prompt usage
+- Model interactions
+- User activities
+- AI response logs
+- Governance records
 
 ---
 
-## Azure Front Door
-Responsible for:
-- Global routing
-- Load balancing
-- SSL offloading
-- Failover handling
-- Edge acceleration
+# 6. Data & Infrastructure Layer
+
+## PostgreSQL
+Used for:
+- Transactional data
+- Application metadata
+- AI metadata
+- Structured workloads
 
 ---
 
-## API Management (APIM)
-Responsible for:
-- API Gateway
-- JWT validation
-- Rate limiting
-- API security
-- API versioning
-- Backend routing
+## Cosmos DB
+Used for:
+- NoSQL workloads
+- AI/vector workloads
+- Distributed applications
 
 ---
-
-## Application Services
-
-### Frontend App Service
-Hosts frontend applications:
-- React
-- Next.js
-- Angular
-
-### Backend API App Service
-Hosts:
-- REST APIs
-- Authentication
-- Business logic
-
-### MCP App Service
-Responsible for:
-- AI orchestration
-- Context management
-- Agent coordination
-- Tool calling
-
-### AI Service App Service
-Responsible for:
-- AI inference
-- OpenAI integrations
-- Prompt execution
-- Embedding services
-
----
-
-# Data Layer
 
 ## Redis Cache
 Used for:
+- Session storage
 - AI response caching
-- Session management
 - Token caching
-- Distributed locks
+- Distributed locking
 
 ---
 
-## Database Services
-
-Supported:
-- Azure SQL
-- PostgreSQL Flexible Server
-- CosmosDB
-
----
-
-## Storage Account
-
+## Azure Storage Account
 Used for:
-- Terraform backend state
-- AI artifacts
-- Prompt storage
-- ML datasets
-- Logs and exports
+- Blob storage
+- Artifacts
+- Terraform state
+- Logs
+- AI datasets
+- Model storage
 
 ---
 
-# Monitoring & AI Observability
+## Azure Service Bus
+Used for:
+- Queue processing
+- Event-driven architecture
+- Async communication
+
+---
+
+# 7. Security & Identity
+
+## Microsoft Entra ID
+Responsible for:
+- Authentication
+- Authorization
+- Identity management
+
+---
+
+## Managed Identity
+Used to:
+- eliminate hardcoded credentials
+- securely access Azure resources
+
+---
+
+## Azure Key Vault
+Responsible for:
+- Secrets management
+- Certificates
+- API keys
+- Sensitive configuration storage
+
+---
+
+## RBAC
+Used for:
+- Least privilege access
+- Resource authorization
+- Secure operational governance
+
+---
+
+## Network Security
+
+Planned implementation:
+- Virtual Networks
+- Private Subnets
+- NSGs
+- UDRs
+- Private Endpoints
+
+---
+
+# 8. Observability & Monitoring
+
+## Azure Monitor
+Used for:
+- Metrics collection
+- Infrastructure monitoring
+- Resource visibility
+
+---
 
 ## Application Insights
 Tracks:
-- Request telemetry
+- Requests
 - Failures
 - Dependencies
-- AI request tracing
-- AI latency monitoring
+- AI telemetry
+- Latency
 
 ---
 
 ## Log Analytics Workspace
-Centralized logging for:
+Centralized platform logs for:
+- AKS
 - APIM
 - Front Door
-- AI Services
-- App Services
+- AI workloads
 - Databases
-- ML workloads
 
 ---
 
-## Azure Monitor
-Responsible for:
-- Metrics
-- Dashboards
-- Monitoring
-- Alerting
-
----
-
-## AI Monitoring
-Tracks:
-- Token usage
+## Alerts
+Planned alerts:
+- CPU spikes
+- Memory spikes
+- 5xx errors
 - AI latency
-- Prompt failures
-- Content safety violations
-- Model drift
-- Cost monitoring
+- Cost spikes
+- Resource health failures
 
 ---
 
-# Repository Structure
+## Dashboards & Workbooks
+Planned dashboards:
+- Operational dashboards
+- AI observability dashboards
+- Cost monitoring dashboards
+- Security dashboards
+
+---
+
+# 9. Infrastructure as Code (Terraform)
+
+## Terraform Design Goals
+
+The infrastructure is being designed with:
+- Modular architecture
+- Reusable components
+- Environment isolation
+- Scalable deployments
+- CI/CD readiness
+- Enterprise naming standards
+
+---
+
+# Planned Terraform Repository Structure
 
 ```text
-azure-cloudflare-ai-platform/
+terraform-platform/
 │
 ├── modules/
-│   ├── resource-group/
+│   ├── aks/
 │   ├── networking/
 │   ├── frontdoor/
-│   ├── appservice/
 │   ├── apim/
+│   ├── container-apps/
 │   ├── redis/
-│   ├── database/
+│   ├── databases/
 │   ├── monitoring/
-│   ├── alerts/
-│   ├── keyvault/
-│   ├── storage/
+│   ├── security/
 │   ├── cloudflare/
-│   ├── ai-foundry/
-│   ├── openai/
-│   ├── ml-workspace/
-│   ├── content-safety/
-│   ├── pii-detection/
+│   ├── storage/
 │   └── identities/
 │
 ├── environments/
@@ -374,103 +500,129 @@ azure-cloudflare-ai-platform/
 │   └── prod/
 │
 ├── pipelines/
-│
 ├── scripts/
-│
 ├── docs/
-│
 └── README.md
 ```
 
 ---
 
-# Multi-Environment Strategy
+# 10. CI/CD & DevOps
 
-Supported environments:
+## Planned CI/CD Stack
+- GitHub Actions
+- Terraform Automation
+- Container Build Pipelines
+- Image Scanning
+- Automated Deployments
+
+---
+
+## Planned Pipeline Stages
+
+### Infrastructure
+- Terraform fmt
+- Terraform validate
+- Terraform plan
+- Terraform apply
+
+### Application
+- Build
+- Test
+- Docker Build
+- Security Scan
+- Push to ACR
+- Deploy to AKS / ACA
+
+---
+
+# 11. Environment Strategy
+
+## Environments
+
+The platform supports:
 - Development
 - QA
 - Staging
 - Production
 
-Each environment contains:
-- Dedicated infrastructure
-- Isolated state
-- Environment-specific configurations
+### Each Environment Includes
+- Isolated resources
+- Dedicated configurations
 - Independent monitoring
+- Separate Terraform state
 
 ---
 
-# Security Practices
+# 12. Future Enhancements
 
-Implemented:
-- Managed Identity
-- RBAC
-- Key Vault integration
-- Secure secret handling
-- WAF protection
-- AI guardrails
-- PII masking
-- Content filtering
+## Planned Improvements
 
-Future enhancements:
-- Private Endpoints
-- Internal APIM
+### Platform Engineering
+- GitOps
+- ArgoCD
+- Service Mesh
+- Internal Developer Platform
+
+### AI Infrastructure
+- RAG pipelines
+- Multi-agent systems
+- AI observability
+- Model governance
+
+### Security
 - Zero Trust networking
 - Hub-Spoke architecture
+- Internal APIM
+- Private AKS
 
----
-
-# CI/CD Strategy
-
-Planned deployment workflow:
-- Terraform Format
-- Terraform Validate
-- Terraform Plan
-- Terraform Apply
-
-CI/CD Platforms:
-- GitHub Actions
-- Azure DevOps
-
----
-
-# Future Enhancements
-
-Planned improvements:
-- AKS Integration
-- Vector Database
-- RAG Architecture
-- AI Agents
+### Reliability
 - Multi-region deployment
-- DR Strategy
-- Service Mesh
-- AI Governance dashboards
-- AI Cost Optimization
-- AI Security Analytics
+- Disaster Recovery
+- Backup automation
+- High availability
 
 ---
 
-# Goals of This Project
+# 13. Learning Goals
 
-This platform is designed to:
-- Simulate enterprise-grade AI infrastructure
-- Learn modern platform engineering
-- Practice production-ready Terraform patterns
-- Implement secure AI systems
-- Explore MLOps and AI observability
-- Build scalable cloud-native architectures
+This project is being built to gain hands-on experience in:
+- Enterprise Cloud Architecture
+- Kubernetes
+- AI Infrastructure
+- Terraform
+- MLOps
+- Platform Engineering
+- Cloud Security
+- Observability Engineering
+
+---
+
+# Status
+
+🚧 Currently under active design and implementation.
+
+Planned next steps:
+- Terraform module development
+- AKS provisioning
+- APIM integration
+- Azure Container Apps deployment
+- AI governance implementation
+- CI/CD automation
 
 ---
 
 # Author
 
-Built with a strong focus on:
+Built with a focus on:
+- Cloud-Native Architecture
 - Platform Engineering
 - AI Infrastructure
-- MLOps
+- Kubernetes
 - DevOps
-- Cloud Architecture
-- Infrastructure as Code
+- Terraform
+- MLOps
+- Enterprise Security
 - Responsible AI
 
 ---
