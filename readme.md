@@ -2,6 +2,9 @@
 
 > Enterprise-grade cloud-native AI platform built using Terraform, Azure, AKS, Azure Container Apps, Cloudflare, and modern MLOps practices.
 
+
+<img width="1536" height="1024" alt="ChatGPT Image May 24, 2026, 01_03_38 PM" src="https://github.com/user-attachments/assets/753cb005-5872-4adb-a23b-4d08e235ba43" />
+
 ---
 
 # Project Vision
